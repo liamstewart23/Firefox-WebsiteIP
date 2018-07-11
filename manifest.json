@@ -1,0 +1,28 @@
+{
+
+  "description": "",
+  "manifest_version": 2,
+  "name": "Get Website IP",
+  "version": "1.0",
+  "homepage_url": "https://github.com/liamstewart23/Firefox-WebsiteIP",
+  "icons": {
+    "48": "icons/icon.png"
+  },
+
+  "permissions": [
+    "activeTab",
+    "tabs"
+  ],
+
+  "browser_action": {
+    "default_icon": "icons/icon.png",
+    "theme_icons": [{
+        "light": "icons/icon.png",
+        "dark": "icons/icon.png",
+        "size": 48
+    }],
+    "default_title": "Get Website IP",
+    "default_popup": "popup/index.html"
+  }
+
+}
