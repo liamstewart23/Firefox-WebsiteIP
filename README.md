@@ -7,6 +7,5 @@ Simple Firefox Addon to get the current website IP.
 https://addons.mozilla.org/en-US/firefox/addon/website-ip/
 
 ## Google Chrome
-https://chrome.google.com/webstore/detail/get-website-ip/dmgahoocbgdiidmbmihphakakdddgoof
 
 https://github.com/liamstewart23/ChromeExt-WebsiteIP
