@@ -1,28 +1,25 @@
+// Docs used https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/dns/resolve
 browser.tabs.query({
     currentWindow: true,
     active: true
-  })
-  .then((tabs) => {
-    let url = tabs[0].url; //current url
+})
+    .then((tabs) => {
+        let parser = document.createElement('a');
+        parser.href = tabs[0].url;
+        let resolving = browser.dns.resolve(parser.hostname);
+        resolving.then((record) =>{
+            let IPv4 = document.querySelector('#IPv4');
+            let IPv6 = document.querySelector('#IPv6');
+            IPv4.value = record.addresses[1];
+            IPv6.value = record.addresses[0];
+            IPv4.addEventListener('click',() => {
+                IPv4.select();
+                document.execCommand('copy');
+            },false);
+            IPv6.addEventListener('click',() => {
+                IPv6.select();
+                document.execCommand('copy');
+            },false);
 
-    //hack to get just domain
-    let parser = document.createElement('a');
-    parser.href = url;
-    let urlFetch = 'http://ip-api.com/json/' + parser.hostname; //url to fetch
-    let copyField = document.querySelector('#copyField');
-
-    function copyToClipboard() {
-        copyField.select();
-        document.execCommand("copy");
-    }
-
-    fetch(urlFetch)
-      .then(res => res.json())
-      .then((output) => {
-        copyField.value = output.query;
-        document.addEventListener('click',copyToClipboard,false);
-      })
-      .catch(err => {
-        document.body.innerHTML = ':(';
-      });
-  })
+        });
+    });
