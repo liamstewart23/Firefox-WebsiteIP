@@ -6,12 +6,10 @@ browser.tabs.query({
     .then((tabs) => {
 
         // Get Tab URL
-
         let parser = document.createElement('a');
         parser.href = tabs[0].url;
 
         // IPv4 Lookup
-
         let resolvingIPv4 = browser.dns.resolve(parser.hostname, [
             'disable_ipv6'
         ]);
@@ -27,7 +25,6 @@ browser.tabs.query({
         });
 
         // IPv6 Lookup
-
         let resolvingIPv6 = browser.dns.resolve(parser.hostname, [
             'disable_ipv4'
         ]);
